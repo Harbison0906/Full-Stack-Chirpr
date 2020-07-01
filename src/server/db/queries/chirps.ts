@@ -6,4 +6,4 @@ const one = (id: number) => Query('SELECT * FROM chirps WHERE id = ?', [id]);
 const destroy = (id: number) => Query('DELETE FROM chirps WHERE id = ?', [id])
 const update = ()
 
-export default {all, one};
+export default {all, one, destroy, update};
