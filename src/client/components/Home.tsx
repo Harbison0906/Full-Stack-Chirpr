@@ -29,8 +29,8 @@ export default class Home extends Component<IHomeProps, IHomeState> {
                 <div key={chirp.id} className="col-md-7">
                   <div className="card shadow-sm">
                     <div className="card-body">
-                      <h5 className="card-title">{chirp.user}</h5>
-                      <p className="card-text">{chirp.text}</p>
+                      <h5 className="card-title">{chirp.userid}</h5>
+                      <p className="card-text">{chirp.content}</p>
                       <Link className="link" to={`/admin/${chirp.id}`} >
                         <button
                           id="adminButton"

@@ -7,13 +7,13 @@ export default class Admin extends Component<IAdminProps, IAdminState> {
   constructor(props: IAdminProps) {
     super(props);
     this.state = {
-      user: '',
+      userid: '',
       value: ''
     };
   }
 
   handleUserChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ user: event.target.value });
+    this.setState({ userid: event.target.value });
   }
 
   handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -24,12 +24,12 @@ export default class Admin extends Component<IAdminProps, IAdminState> {
 
     fetch(`/api/chirps/${this.props.match.params.id}`)
       .then(res => res.json())
-      .then((chirp: IChirp) => this.setState({ user: chirp.user, value: chirp.text }));
+      .then((chirp: IChirp) => this.setState({ userid: chirp.userid, value: chirp.content }));
   }
 
   editChirp = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const data = { user: this.state.user, text: this.state.value }
+    const data = { userid: this.state.userid, content: this.state.value }
     fetch(`/api/chirps/${this.props.match.params.id}`, {
       method: 'PUT',
       headers: {
@@ -67,7 +67,7 @@ export default class Admin extends Component<IAdminProps, IAdminState> {
                 <div className="card shadow-sm">
                   <div className="card-body">
                     <form className="form-group">
-                      <input value={this.state.user} onChange={this.handleUserChange} id="username" type="text" className="form-control shadow-sm" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                      <input value={this.state.userid} onChange={this.handleUserChange} id="username" type="text" className="form-control shadow-sm" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
                       <textarea
                         className="shadow-sm form-control mb-3"
                         aria-label="With textarea"
@@ -102,7 +102,7 @@ export default class Admin extends Component<IAdminProps, IAdminState> {
 
 interface IAdminProps extends RouteComponentProps<{ id: string }> { }
 interface IAdminState {
-  user: string;
+  userid: string;
   value: string;
 }
 

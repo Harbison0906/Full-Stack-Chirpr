@@ -1,5 +1,6 @@
 export interface IChirp {
   id: string;
-  user: string;
-  text: string;
+  userid: string;
+  content: string;
+  location: string;
 }
