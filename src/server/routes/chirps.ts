@@ -12,7 +12,7 @@ router.get('/:id?', async (req, res, next) => {
     } else {
       const chirps = await db.chirps.all()
       res.json(chirps)
-      
+
     }
   } catch (error) {
     console.log(error)
@@ -30,6 +30,18 @@ router.post('/', async (req, res) => {
     res.status(500).json('Oops, something went wrong...')
   }
 });
+
+router.put('/:id', async (req, res) => {
+  const id = Number(req.params.id);
+  const content = req.body;
+  try {
+    const updateChirp = await db.chirps.updateChirp(id, content);
+    res.json('Chirp updated!');
+  } catch (error) {
+    console.log(error);
+    res.status(500).json('Oops, something went wrong...')
+  }
+})
 
 router.delete('/:id?', async (req, res) => {
   const id = Number(req.params.id)
