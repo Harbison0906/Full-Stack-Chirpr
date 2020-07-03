@@ -21,9 +21,9 @@ router.get('/:id?', async (req, res, next) => {
 });
 
 router.post('/', async (req, res) => {
-  const chirp = Object(req.body)
+  const chirp = req.body;
   try {
-    const newChirp = await db.chirps.newChirp(chirp);
+    const newChirp = await db.chirps.newChirp(chirp.userid, chirp.content, chirp.location);
     res.json('Thanks for chirping!');
   } catch (error) {
     console.log(error);
