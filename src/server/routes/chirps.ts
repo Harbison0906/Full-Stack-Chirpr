@@ -23,7 +23,7 @@ router.get('/:id?', async (req, res, next) => {
 router.post('/', async (req, res) => {
   const chirp = req.body;
   try {
-    const newChirp = await db.chirps.newChirp(chirp.userid, chirp.content, chirp.location);
+    const newChirp = await db.chirps.newChirp(chirp.userid, chirp.content);
     res.json('Thanks for chirping!');
   } catch (error) {
     console.log(error);

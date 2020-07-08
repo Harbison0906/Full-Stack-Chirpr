@@ -23,7 +23,7 @@ export default class AddChirp extends Component<IAddProps, IAddState> {
 
   addChirp = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const data = {user: this.state.user, text: this.state.value}
+    const data = {userid: this.state.user, content: this.state.value}
     fetch('/api/chirps', {
       method: 'POST',
       headers: {
