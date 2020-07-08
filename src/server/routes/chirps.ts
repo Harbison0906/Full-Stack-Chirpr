@@ -7,7 +7,7 @@ router.get('/:id?', async (req, res, next) => {
   const id = Number(req.params.id)
   try {
     if (id) {
-      const chirp = await db.chirps.one(id)
+      const [chirp] = await db.chirps.one(id)
       res.json(chirp)
     } else {
       const chirps = await db.chirps.all()
